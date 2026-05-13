@@ -1,4 +1,4 @@
-ï»¿using TMPro;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,11 +9,13 @@ public class Bullet : MonoBehaviour
     private Rigidbody2D rb;
     private TextMeshProUGUI m_text;
 
+    private Camera camera;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        camera = GameObject.Find("Main Camera").GetComponent<Camera>();
     }
 
     // Update is called once per frame
@@ -27,31 +29,25 @@ public class Bullet : MonoBehaviour
         }
     }
 
-    // ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿è¨­å®š
     public void SetParam(Vector2 pos, float x, string text)
     {
-        Debug.Log(m_text);
-
         m_text = transform.GetComponent<TextMeshProUGUI>();
 
         Vector3 screenPoint = Camera.main.WorldToScreenPoint(pos);
         GetComponent<RectTransform>().position = screenPoint;
         vec = x;
         m_text.text = text;
-        m_text.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = text;
+
+        // Žq—v‘f‚ÌƒeƒLƒXƒg‚àXVi‰Žæ‚è—p‚È‚Çj
+        if (transform.childCount > 0)
+        {
+            m_text.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = text;
+        }
     }
 
     void OnBecameInvisible()
     {
         Destroy(this.gameObject);
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if(collision.gameObject.CompareTag("Enemy"))
-        {
-            Destroy(collision.gameObject);
-        }
     }
 }
 
