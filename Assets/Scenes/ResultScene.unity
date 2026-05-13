@@ -1210,7 +1210,7 @@ GameObject:
   - component: {fileID: 1081855786}
   - component: {fileID: 1081855785}
   m_Layer: 5
-  m_Name: Score
+  m_Name: ClearScore
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1696,7 +1696,7 @@ GameObject:
   - component: {fileID: 1313891788}
   - component: {fileID: 1313891787}
   m_Layer: 5
-  m_Name: Score
+  m_Name: GameOverScore
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2210,6 +2210,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ResultScene
   resultClearPanel: {fileID: 466924431}
   resultGameOverPanel: {fileID: 798076915}
+  scoreTextClear: {fileID: 1081855785}
+  scoreTextGameOver: {fileID: 1313891787}
 --- !u!4 &2009932743
 Transform:
   m_ObjectHideFlags: 0
