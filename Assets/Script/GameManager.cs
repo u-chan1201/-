@@ -10,11 +10,12 @@ public class GameManager : MonoBehaviour
     public int gameOverEnemyCount = 3;  // 何体でゲームオーバーか
 
     public static bool isClear = false; // クリア判定
+    public static int finalScore = 0;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        finalScore = 0;
     }
 
     // 敵が左端に到達したときに、敵側のスクリプトから呼ばれる命令(敵をカウント)
@@ -22,6 +23,7 @@ public class GameManager : MonoBehaviour
     {
         // 到達したら数える
         enemyCount++;
+        finalScore = score;
         Debug.Log("敵が到達、現在" + enemyCount);
 
         // 3体以上通ったらゲームオーバー
