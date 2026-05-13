@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using UnityEngine.SocialPlatforms.Impl;
 
 public class GameManager : MonoBehaviour
@@ -12,10 +13,15 @@ public class GameManager : MonoBehaviour
     public static bool isClear = false; // クリア判定
     public static int finalScore = 0;
 
+    public AudioSource audioSource;    // スピーカー
+    public AudioClip damageSE;        // ダメージ音
+    public Image[] heartIcons;        // ライフの画像
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         finalScore = 0;
+        UpdateLifeUI();
     }
 
     // 敵が左端に到達したときに、敵側のスクリプトから呼ばれる命令(敵をカウント)
@@ -25,6 +31,15 @@ public class GameManager : MonoBehaviour
         enemyCount++;
         finalScore = score;
         Debug.Log("敵が到達、現在" + enemyCount);
+
+        // ダメージ音を鳴らす
+        if (audioSource != null && damageSE != null)
+        {
+            audioSource.PlayOneShot(damageSE);
+        }
+
+        // ライフの見た目を更新
+        UpdateLifeUI();
 
         // 3体以上通ったらゲームオーバー
         if (enemyCount >= gameOverEnemyCount)
@@ -59,5 +74,23 @@ public class GameManager : MonoBehaviour
         isClear = false;
         Debug.Log("ゲームオーバー...");
         SceneManager.LoadScene("ResultScene");
+    }
+
+    // ライフ画像を表示・非表示にする関数
+    void UpdateLifeUI()
+    {
+        for (int i = 0; i < heartIcons.Length; i++)
+        {
+            // enemyCount（通った数）より後ろのアイコンだけ表示する
+            // 例：1体通ったら 0番目のハートを消す
+            if (i < enemyCount)
+            {
+                heartIcons[i].enabled = false; // 非表示
+            }
+            else
+            {
+                heartIcons[i].enabled = true;  // 表示
+            }
+        }
     }
 }
