@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ResultScene : MonoBehaviour
 {
@@ -23,5 +24,19 @@ public class ResultScene : MonoBehaviour
             // ゲームオーバーパネルを表示
             resultGameOverPanel.SetActive(true);
         }
+    }
+
+    // タイトルへ戻る
+    public void BackToTitle()
+    {
+        SceneManager.LoadScene("TitleScene");
+    }
+
+    // リスタート
+    public void RestartGame()
+    {
+        // 判定用の変数をリセットしてから遷移）
+        GameManager.isClear = false;
+        SceneManager.LoadScene("GamePlayScene");
     }
 }
