@@ -10,6 +10,9 @@ public class ResultScene : MonoBehaviour
     public TextMeshProUGUI scoreTextClear;
     public TextMeshProUGUI scoreTextGameOver;
 
+    public AudioSource audioSource;
+    public AudioClip buttonSE;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -45,6 +48,7 @@ public class ResultScene : MonoBehaviour
     // タイトルへ戻る
     public void BackToTitle()
     {
+        PlayButtonSound();
         SceneManager.LoadScene("TitleScene");
     }
 
@@ -52,8 +56,19 @@ public class ResultScene : MonoBehaviour
     public void RestartGame()
     {
         // 判定用の変数をリセットしてから遷移
+        PlayButtonSound();
         GameManager.isClear = false;
         GameManager.finalScore = 0;
         SceneManager.LoadScene("GamePlayScene");
+    }
+
+    // ボタン音を再生する専用の関数
+    void PlayButtonSound()
+    {
+        if (audioSource != null && buttonSE != null)
+        {
+            // BGMとは別に、効果音を一度だけ重ねて鳴らす
+            audioSource.PlayOneShot(buttonSE);
+        }
     }
 }
