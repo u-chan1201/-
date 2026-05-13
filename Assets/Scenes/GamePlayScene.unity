@@ -350,6 +350,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1359511234}
   - component: {fileID: 1359511233}
+  - component: {fileID: 1359511235}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -382,12 +383,36 @@ Transform:
   m_GameObject: {fileID: 1359511232}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+<<<<<<< Updated upstream
   m_LocalPosition: {x: 0, y: 0, z: 0}
+=======
+  m_LocalPosition: {x: 168.317, y: 252.13445, z: 0}
+>>>>>>> Stashed changes
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1359511235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1359511232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7400d15e4011e884b98e0e6573c99dd0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemySpown
+  enemyPrefab: {fileID: 8585401293426096151, guid: c45e31e1716627c48be66dd50a3e79b2, type: 3}
+  spawnInterval: 1.5
+  spawnYrange: 3
+  spawnXrange: 10
+  specialPrefab: {fileID: 8398221370891948175, guid: 06642982efd6efb4caa325e33bbb55b2, type: 3}
+  specialEnemyspawnInterval: 3
+  specialEnemyspawnYrange: 5
+  specialEnemyspawnXrange: 10
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

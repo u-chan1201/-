@@ -107,7 +107,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemySpecialMove
   Speed: 2
   verticalSpeed: 3
-  yRange: 3
+  yRange: 4.2
 --- !u!61 &159411900160654076
 BoxCollider2D:
   m_ObjectHideFlags: 0
