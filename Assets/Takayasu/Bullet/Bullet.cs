@@ -1,4 +1,4 @@
-ï»¿using TMPro;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,50 +8,54 @@ public class Bullet : MonoBehaviour
 
     private Rigidbody2D rb;
     private TextMeshProUGUI m_text;
+    private RectTransform rectTransform;
 
+    private Camera cam;
+
+    void Awake()
+    {
+        rectTransform = GetComponent<RectTransform>();
+    }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        cam = GameObject.Find("Main Camera").GetComponent<Camera>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        this.rb.AddForce(new Vector2(vec, 0.0f));
+        rectTransform.anchoredPosition += new Vector2(vec * Time.deltaTime * 100f, 0);
 
-        if(GetComponent<RectTransform>().position.x > 1000)
+        // UIÀ•WianchoredPositionj‚Å”»’è
+        if (rectTransform.anchoredPosition.x > 1500)
         {
             Destroy(this.gameObject);
         }
     }
 
-    // ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿è¨­å®š
-    public void SetParam(Vector2 pos, float x, string text)
+    public void SetParam(Vector2 canvasPos, float x, string text)
     {
-        Debug.Log(m_text);
+        m_text = GetComponent<TextMeshProUGUI>();
+        rectTransform = GetComponent<RectTransform>();
 
-        m_text = transform.GetComponent<TextMeshProUGUI>();
+        rectTransform.anchoredPosition = canvasPos;
 
-        Vector3 screenPoint = Camera.main.WorldToScreenPoint(pos);
-        GetComponent<RectTransform>().position = screenPoint;
         vec = x;
         m_text.text = text;
-        m_text.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = text;
+
+        if (transform.childCount > 0)
+        {
+            var childText = transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+            if (childText != null) childText.text = text;
+        }
     }
 
     void OnBecameInvisible()
     {
         Destroy(this.gameObject);
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if(collision.gameObject.CompareTag("Enemy"))
-        {
-            Destroy(collision.gameObject);
-        }
     }
 }
 

@@ -1,15 +1,15 @@
-ï»¿using System;
+using System;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
-// æŠ½è±¡ã‚¯ãƒ©ã‚¹ã‚’ä½œæˆ
+// ’ŠÛƒNƒ‰ƒX‚ğì¬
 public abstract class Judge
 {
     public abstract bool Is();
 }
 
-// å®Ÿéš›ã®å‡¦ç†ã‚’æ›¸ãã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆ
+// ÀÛ‚Ìˆ—‚ğ‘‚­ƒRƒ“ƒ|[ƒlƒ“ƒg
 public class PressedJudge : Judge
 {
 
@@ -21,7 +21,7 @@ public class PressedJudge : Judge
     public override bool Is() => func.Invoke();
 }
 
-// ç§»å‹•ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆ
+// ˆÚ“®ƒRƒ“ƒ|[ƒlƒ“ƒg
 public class Move : MonoBehaviour
 {
     public PressedJudge rightMove;
@@ -66,5 +66,14 @@ public class Move : MonoBehaviour
 
         if(m_isjump)
             this.gameObject.transform.Translate(0, impuctSpeed, 0);
+
+        // --- ‰æ–ÊŠO‚Ös‚©‚È‚¢ˆ— ---
+        float yRange = 4.0f; // ‰æ–Ê‚Ìã‰º’[BƒJƒƒ‰‚ÌƒTƒCƒY‚É‡‚í‚¹‚Ä’²®‚µ‚Ä‚­‚¾‚³‚¢
+
+        // Œ»İ‚ÌYÀ•W‚ğ -4.5 ‚©‚ç 4.5 ‚ÌŠÔ‚É‹­§“I‚Éû‚ß‚é
+        float clampedY = Mathf.Clamp(transform.position.y, -yRange, yRange);
+
+        // §ŒÀ‚µ‚½À•W‚ğ©•ª‚ÌˆÊ’u‚Éã‘‚«‚·‚é
+        transform.position = new Vector3(transform.position.x, clampedY, transform.position.z);
     }
 }
