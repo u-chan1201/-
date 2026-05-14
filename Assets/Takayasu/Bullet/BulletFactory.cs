@@ -1,15 +1,17 @@
-Ôªøusing UnityEngine;
+using UnityEngine;
 
 public class BulletFactory : MonoBehaviour
 {
     [SerializeField] TextDatas textDatas;
     [SerializeField] private Bullet bullet;
     private Canvas c;
+    private RectTransform canvasRect;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         c = GameObject.Find("Canvas").GetComponent<Canvas>();
+        canvasRect = c.GetComponent<RectTransform>();
     }
 
     // Update is called once per frame
@@ -20,10 +22,21 @@ public class BulletFactory : MonoBehaviour
 
     public void Shoot(Vector2 pos, float x)
     {
-        int rand = Random.Range(0, textDatas.text.Count - 1);
+        int rand = Random.Range(0, textDatas.text.Count);
 
         GameObject parent = c.gameObject;
         var b = Instantiate(bullet, c.transform);
-        b.SetParam(pos, x, textDatas.text[rand]);
+
+        Vector2 screenPos = Camera.main.WorldToScreenPoint(pos);
+
+        //  ÉXÉNÉäÅ[Éìç¿ïWÇÅACanvasÇÃíÜÇÃç¿ïWÇ…ïœä∑
+        Vector2 localPos;
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(
+            canvasRect,
+            screenPos,
+            c.worldCamera,
+            out localPos
+        );
+        b.SetParam(localPos, x, textDatas.text[rand]);
     }
 }

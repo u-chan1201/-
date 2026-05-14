@@ -8,40 +8,48 @@ public class Bullet : MonoBehaviour
 
     private Rigidbody2D rb;
     private TextMeshProUGUI m_text;
+    private RectTransform rectTransform;
 
-    private Camera camera;
+    private Camera cam;
+
+    void Awake()
+    {
+        rectTransform = GetComponent<RectTransform>();
+    }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        camera = GameObject.Find("Main Camera").GetComponent<Camera>();
+        cam = GameObject.Find("Main Camera").GetComponent<Camera>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        this.rb.AddForce(new Vector2(vec, 0.0f));
+        rectTransform.anchoredPosition += new Vector2(vec * Time.deltaTime * 100f, 0);
 
-        if(GetComponent<RectTransform>().position.x > 1000)
+        // UI座標（anchoredPosition）で判定
+        if (rectTransform.anchoredPosition.x > 1500)
         {
             Destroy(this.gameObject);
         }
     }
 
-    public void SetParam(Vector2 pos, float x, string text)
+    public void SetParam(Vector2 canvasPos, float x, string text)
     {
-        m_text = transform.GetComponent<TextMeshProUGUI>();
+        m_text = GetComponent<TextMeshProUGUI>();
+        rectTransform = GetComponent<RectTransform>();
 
-        Vector3 screenPoint = Camera.main.WorldToScreenPoint(pos);
-        GetComponent<RectTransform>().position = screenPoint;
+        rectTransform.anchoredPosition = canvasPos;
+
         vec = x;
         m_text.text = text;
 
-        // 子要素のテキストも更新（縁取り用など）
         if (transform.childCount > 0)
         {
-            m_text.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = text;
+            var childText = transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+            if (childText != null) childText.text = text;
         }
     }
 

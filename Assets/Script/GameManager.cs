@@ -5,8 +5,8 @@ using UnityEngine.SocialPlatforms.Impl;
 
 public class GameManager : MonoBehaviour
 {
-    public int score = 0;               // 現在の得点
-    public int targetScore = 100;       // 目標の得点
+    public static int score = 0;               // 現在の得点
+    public int targetScore = 300;       // 目標の得点
     public int enemyCount = 0;          // 到達した敵の数
     public int gameOverEnemyCount = 3;  // 何体でゲームオーバーか
 
@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        score = 0;
         finalScore = 0;
         UpdateLifeUI();
     }
@@ -29,7 +30,6 @@ public class GameManager : MonoBehaviour
     {
         // 到達したら数える
         enemyCount++;
-        finalScore = score;
         Debug.Log("敵が到達、現在" + enemyCount);
 
         // ダメージ音を鳴らす
@@ -53,6 +53,7 @@ public class GameManager : MonoBehaviour
     {
         // 得点加点
         score += amount;
+        finalScore = score;
         Debug.Log("得点ゲット！ 現在: " + score);
 
         // 目標の得点に到達したらクリア
