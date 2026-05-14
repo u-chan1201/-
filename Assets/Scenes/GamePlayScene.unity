@@ -146,14 +146,14 @@ RectTransform:
   m_GameObject: {fileID: 265913875}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.37061, y: 0.37061, z: 0.37061}
+  m_LocalScale: {x: 0.5330854, y: 0.5330854, z: 0.5330854}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2105722921}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -259, y: 160}
+  m_AnchoredPosition: {x: -285.52, y: 187.30002}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &265913877
@@ -449,14 +449,14 @@ RectTransform:
   m_GameObject: {fileID: 570516683}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.37061, y: 0.37061, z: 0.37061}
+  m_LocalScale: {x: 0.5330854, y: 0.5330854, z: 0.5330854}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2105722921}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -308, y: 160}
+  m_AnchoredPosition: {x: -356, y: 187.3}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &570516685
@@ -719,14 +719,14 @@ RectTransform:
   m_GameObject: {fileID: 1186125802}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.37061, y: 0.37061, z: 0.37061}
+  m_LocalScale: {x: 0.5330854, y: 0.5330854, z: 0.5330854}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2105722921}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -209, y: 160}
+  m_AnchoredPosition: {x: -213.59999, y: 187.30002}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1359511232
@@ -760,7 +760,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17b3d977fe394564e9de8b7e4f1f750f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
-  score: 0
   targetScore: 100
   enemyCount: 0
   gameOverEnemyCount: 3
@@ -1029,7 +1028,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.CanvasScaler
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
