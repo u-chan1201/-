@@ -760,7 +760,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17b3d977fe394564e9de8b7e4f1f750f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
-  targetScore: 100
+  targetScore: 300
   enemyCount: 0
   gameOverEnemyCount: 3
   audioSource: {fileID: 1359511236}
@@ -797,12 +797,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemySpown
   enemyPrefab: {fileID: 8585401293426096151, guid: c45e31e1716627c48be66dd50a3e79b2, type: 3}
-  spawnInterval: 1.5
+  spawnInterval: 2
   spawnYrange: 3
   spawnXrange: 10
   specialPrefab: {fileID: 8398221370891948175, guid: 06642982efd6efb4caa325e33bbb55b2, type: 3}
-  specialEnemyspawnInterval: 3
-  specialEnemyspawnYrange: 3
+  specialEnemyspawnInterval: 5
+  specialEnemyspawnYrange: 4
   specialEnemyspawnXrange: 10
 --- !u!82 &1359511236
 AudioSource:
