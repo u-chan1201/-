@@ -13,13 +13,18 @@ public class Player : MonoBehaviour
     private BulletFactory bf;
 
     [SerializeField] private float x;
-    
+
+    //音声
+    private AudioSource audioSource;
+    [SerializeField] private AudioClip shootSound;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         move = this.gameObject.GetComponent<Move>();
         bf = this.gameObject.GetComponent<BulletFactory>();
+
+        audioSource = GetComponent<AudioSource>();
 
         move.rightMove = this.PressedRight();
         move.leftMove = this.PressedLeft();
@@ -51,6 +56,11 @@ public class Player : MonoBehaviour
         if(Keyboard.current.spaceKey.wasPressedThisFrame)
         {
             bf.Shoot(this.gameObject.transform.position, x);
+
+            if (audioSource != null && shootSound != null)
+            {
+                audioSource.PlayOneShot(shootSound);
+            }
         }
     }
 
